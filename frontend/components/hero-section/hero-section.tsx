@@ -1,9 +1,20 @@
 export default function HeroSection() {
     return (
-        <div>
-            <h1 className="text-4xl font-bold">
-                Turn Your Taste into UI
+        <div id="hero-section" className="p-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-500 text-[11px] font-bold tracking-widest uppercase rounded-full mb-8">
+                <span className="material-symbols-outlined text-[14px]">auto_awesome</span>
+                The Future of Craft
+            </div>
+            <h1 className="text-[3.5rem] font-extrabold font-headline leading-[1.1] tracking-[-0.03em] text-black mb-6 max-w-4xl mx-auto">
+                Generate design systems from <span className="text-blue-500 italic">pure intent</span>.
             </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+                TasteUI leverages neural curation to transform moodboards, brand images, and text descriptions into production-ready UI tokens and components.
+            </p>
+            <div className="flex justify-center gap-4">
+                <button className="rounded bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 hover:shadow-md">Start Crafting</button>
+                <button className="rounded bg-white text-blue-500 rounded-md py-2 px-4 hover:shadow-md">View Showcase</button>
+            </div>
         </div>
     )
 }
