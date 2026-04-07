@@ -3,20 +3,18 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import HeroSection from "@/components/hero-section/hero-section";
-import ImageUpload from "@/components/input-section/image-upload";
-import ColorPalette from "@/components/generated-palatte/generated-palette";
-import InputSection from "@/components/input-section/input-section";
+import HeroSection from "@/app/section/hero-section/hero-section";
+import ColorPalette from "@/app/section/generated-palatte/generated-palette";
+import InputSection from "@/app/section/input-section/input-section";
 
 
-import NavBar from "@/components/commons/nav-bar";
-import GeneratedPalette from "@/components/generated-palatte/generated-palette";
-import SimilarThemes from "@/components/recommendation/similar-themes";
-import ThemeReview from "@/components/theme-review/theme-review";
-import Footer from "@/components/commons/footer";
+import NavBar from "@/app/layout/nav-bar";
+import GeneratedPalette from "@/app/section/generated-palatte/generated-palette";
+import SimilarThemes from "@/app/section/recommendation/similar-themes";
+import ThemeReview from "@/app/section/theme-review/theme-review";
+import Footer from "@/app/layout/footer";
 
 export default function Home() {
-  const [colors, setColors] = useState<number[][]>([]);
   return (
     <>
       <header>
