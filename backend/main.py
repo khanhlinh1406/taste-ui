@@ -35,7 +35,11 @@ def extract_colors(file: UploadFile = File(...)):
         return '#%02x%02x%02x' % tuple(map(int, rgb))
 
     # Convert the colors to hex format
-    for color in colors:
-        hex_colors.append(rgb_to_hex(color))
+    name_list = ["Primary", "Secondary", "Tertiary", "Accent", "On Surface", "Outline"]
+    for idx, color in enumerate(colors):
+        hex_colors.append({
+            "name": name_list[idx],
+            "code": rgb_to_hex(color),
+        })
 
-    return {"colors": hex_colors}
+    return hex_colors
