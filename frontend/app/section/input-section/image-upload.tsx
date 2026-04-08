@@ -1,12 +1,16 @@
 import { AppDispatch } from "@/app/store";
 import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
 
-import { extractColorsThunk } from "@/app/store/slices/designSlice";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/store";
+import { extractColorsThunk, setColors } from "@/app/store/slices/designSlice";
+import { Spinner } from "@/components/ui/spinner";
 
 export default function ImageUpload() {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const dispatch = useDispatch<AppDispatch>();
+    const { loading } = useSelector((state: RootState) => state.design);
 
     const [previewPic, setPreviewPic] = useState<string | null>(null);
 
@@ -87,19 +91,28 @@ export default function ImageUpload() {
                             data-alt="preview pic"
                             src={previewPic ?? undefined}
                         />
+                        {loading && (
+                            <div>
+                                <Spinner className="size-8"></Spinner>
+                            </div>
+                        )}
                     </div>
-                    <button
-                        className="w-full rounded-md bg-white py-2 text-center text-red-500 
-                        hover:shadow-gray-300 hover:border-red-300 hover:border-dashed hover:border-2"
-                        onClick={() => setPreviewPic(null)}
-                    >
-                        <div className="flex justify-center gap-2 align-middle">
-                            <span className="material-symbols-outlined hover:scale-125">
-                                remove_selection
-                            </span>
-                            Remove image
-                        </div>
-                    </button>
+                    {!loading && (
+                        <button
+                            className="w-full rounded-md bg-white py-2 text-center text-red-500 hover:border-2 hover:border-dashed hover:border-red-300 hover:shadow-gray-300"
+                            onClick={() => {
+                                setPreviewPic(null);
+                                dispatch(setColors([]));
+                            }}
+                        >
+                            <div className="flex justify-center gap-2 align-middle">
+                                <span className="material-symbols-outlined hover:scale-125">
+                                    remove_selection
+                                </span>
+                                Remove image
+                            </div>
+                        </button>
+                    )}
                 </>
             )}
         </div>
