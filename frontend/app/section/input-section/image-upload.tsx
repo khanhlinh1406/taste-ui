@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/store";
 import { extractColorsThunk, setColors } from "@/app/store/slices/designSlice";
-import { Spinner } from "@/components/ui/spinner";
+import { Spinner } from "@/app/components/ui/spinner";
 
 export default function ImageUpload() {
     const inputRef = useRef<HTMLInputElement | null>(null);

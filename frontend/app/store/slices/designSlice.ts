@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_BASE } from "@/app/lib/api";
+import { API_BASE } from "@/app/api/api";
 
 export const extractColorsThunk = createAsyncThunk(
     "design/extractColors",
