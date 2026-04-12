@@ -1,3 +1,11 @@
+import {
+  Card,
+  CardContent
+} from "@/app/components/ui/card";
+import { Button } from "@/app/components/ui/button";
+
+import { Brush, Layers, Type, MoreVertical, Activity, CheckCircle2 } from "lucide-react";
+
 export default function ThemeReview() {
   return (
     <div id="theme-review" className="my-6 rounded-xl bg-blue-50 p-6">
@@ -18,94 +26,103 @@ export default function ThemeReview() {
           <ul className="space-y-6">
             <li className="flex items-center gap-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sky-200 text-sky-700">
-                <span className="material-symbols-outlined text-[20px]">
-                  brush
-                </span>
+                <Brush className="size-5" />
               </div>
               <span className="font-bold">Adaptive Radii</span>
             </li>
             <li className="flex items-center gap-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-300 text-slate-700">
-                <span className="material-symbols-outlined text-[20px]">
-                  layers
-                </span>
+                <Layers className="size-5" />
               </div>
               <span className="font-bold">Elevation Levels</span>
             </li>
             <li className="flex items-center gap-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-fuchsia-300 text-fuchsia-900">
-                <span className="material-symbols-outlined text-[20px]">
-                  text_fields
-                </span>
+                <Type className="size-5" />
               </div>
               <span className="font-bold">Scale Hierarchies</span>
             </li>
           </ul>
         </div>
         <div className="md:col-span-2">
-          <div className="grid grid-cols-2">
-            <div className="mx-2 flex flex-col gap-6 rounded-xl bg-white p-8 shadow-[0px_12px_32px_rgba(39,46,66,0.06)]">
-              <div className="flex items-start justify-between">
-                <div className="h-12 w-12 rounded-lg bg-blue-50"></div>
-                <span className="material-symbols-outlined text-outline">
-                  more_vert
-                </span>
-              </div>
-              <div>
-                <h4 className="font-headline mb-2 text-xl font-extrabold">
-                  Interface Card
-                </h4>
-                <p className="text-on-surface-variant text-sm leading-relaxed">
-                  Demonstrating soft shadows and editorial spacing.
-                </p>
-              </div>
-              <button className="rounded-lg bg-blue-500 px-4 py-2 text-sm font-bold text-white hover:shadow-md">
-                Action Button
-              </button>
-            </div>
-            <div className="mx-2 space-y-4 rounded-xl bg-white p-8 shadow-[0px_12px_32px_rgba(39,46,66,0.06)]">
-              <h4 className="text-on-surface-variant text-sm font-bold uppercase tracking-widest">
-                Profile Data
-              </h4>
-              <div className="space-y-4">
-                <div className="flex h-10 items-center rounded-lg bg-blue-50 px-4 text-xs text-gray-500">
-                  Full Name
-                </div>
-                <div className="flex h-10 items-center rounded-lg bg-blue-50 px-4 text-xs text-gray-500">
-                  Email Address
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="h-4 w-4 rounded bg-blue-500"></div>
-                  <span className="text-xs font-medium">Accept terms</span>
-                </div>
-              </div>
-            </div>
+          <div className="grid grid-cols-2 gap-4 mb-4">
+            <InterfaceCard></InterfaceCard>
+            <ProfileDataCard></ProfileDataCard>
           </div>
 
-          <div className="bg-white col-span-2 flex items-center justify-between rounded-xl p-8 mt-4 mx-2 shadow-[0px_12px_32px_rgba(39,46,66,0.06)]">
-            <div className="flex items-center gap-6">
-              <div className="bg-blue-50 flex h-16 w-16 items-center justify-center rounded-full">
-                <span className="material-symbols-outlined text-primary text-3xl">
-                  analytics
-                </span>
-              </div>
-              <div>
-                <h4 className="font-headline text-xl font-extrabold">
-                  Performance Metrics
-                </h4>
-                <p className="text-on-surface-variant text-sm">
-                  System health is at 98% efficiency.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <div className="bg-blue-500 h-8 w-2 rounded-full"></div>
-              <div className="bg-blue-500/40 h-12 w-2 rounded-full"></div>
-              <div className="bg-blue-500/20 h-6 w-2 rounded-full"></div>
-            </div>
-          </div>
+          <PerformanceMetricsCard></PerformanceMetricsCard>
         </div>
       </div>
     </div>
   );
+}
+
+const InterfaceCard = () => {
+  return (
+    <Card className="border-none p-8 shadow-xl shadow-primary/5 ring-0">
+      <div className="mb-6 flex items-start justify-between">
+        <div className="h-12 w-12 rounded-lg bg-primary/10"></div>
+        <Button variant="ghost" size="icon" className="text-muted-foreground">
+          <MoreVertical className="size-5" />
+        </Button>
+      </div>
+      <div className="mb-6">
+        <h4 className="font-headline mb-2 text-xl font-extrabold">Interface Card</h4>
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          Demonstrating soft shadows and editorial spacing.
+        </p>
+      </div>
+      <Button className="w-full shadow-lg shadow-primary/20">
+        Action Button
+      </Button>
+    </Card>
+  )
+}
+
+const ProfileDataCard = () => {
+  return (
+    <Card className="border-none p-8 shadow-xl shadow-primary/5 ring-0">
+      <h4 className="mb-6 text-[0.6875rem] font-bold uppercase tracking-widest text-muted-foreground">
+        Profile Data
+      </h4>
+      <div className="space-y-3">
+        <div className="flex h-10 items-center rounded-lg bg-muted/50 px-4 text-xs font-medium text-muted-foreground">
+          Full Name
+        </div>
+        <div className="flex h-10 items-center rounded-lg bg-muted/50 px-4 text-xs font-medium text-muted-foreground">
+          Email Address
+        </div>
+        <div className="flex items-center gap-3 pt-2">
+          <div className="flex h-4 w-4 items-center justify-center rounded bg-primary text-primary-foreground">
+            <CheckCircle2 className="size-3" />
+          </div>
+          <span className="text-xs font-medium">Accept terms</span>
+        </div>
+      </div>
+    </Card>
+  )
+}
+
+
+const PerformanceMetricsCard = () => {
+  return (
+    <Card className="flex flex-row items-center justify-between border-none p-8 shadow-xl shadow-primary/5 ring-0">
+      <div className="flex items-center gap-6">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+          <Activity className="size-8" />
+        </div>
+        <div>
+          <h4 className="font-headline text-xl font-extrabold">Performance Metrics</h4>
+          <p className="text-sm text-muted-foreground">
+            System health is at <span className="text-primary font-bold">98% efficiency</span>.
+          </p>
+        </div>
+      </div>
+      <div className="flex items-end gap-1.5">
+        <div className="h-8 w-2 rounded-full bg-primary animate-pulse"></div>
+        <div className="h-12 w-2 rounded-full bg-primary/40"></div>
+        <div className="h-6 w-2 rounded-full bg-primary/20"></div>
+      </div>
+    </Card>
+  )
 }

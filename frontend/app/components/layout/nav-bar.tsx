@@ -2,6 +2,9 @@ import Image from "next/image";
 
 import logo from "@/app/assets/logo.png";
 
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+
 export default function NavBar() {
     const menuItems = [
         {
@@ -16,30 +19,43 @@ export default function NavBar() {
         }
     ]
     return (
-        <div id="nav-bar">
-            <div className="bg-white flex item-center justify-between p-4 shadow-md">
-                <div>
-                    <Image src={logo} alt="logo" width={40} height={40} priority />
-                </div>
-                <div className="flex item-center">
-                    <div className="text-2xl text-black font-bold mt-1">Taste UI</div>
+        <div id="nav-bar" className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container flex h-16 items-center justify-between px-4">
+                <div className="flex items-center gap-3 shrink-0">
+                    <Image
+                        src={logo}
+                        alt="logo"
+                        width={36}
+                        height={36}
+                        priority
+                        className="rounded-lg"
+                    />
+                    <span className="font-headline text-xl font-bold tracking-tighter text-foreground">
+                        Taste UI
+                    </span>
                 </div>
 
-                <div className="flex item-center justify-left grow px-4">
-                {
-                    menuItems.map((item) => (
-                        <div key={item.code} className="px-2 py-2 cursor-pointer text-gray-800 hover:text-blue-500">
+                <nav className="hidden md:flex items-center justify-center grow px-8 gap-1">
+                    {menuItems.map((item) => (
+                        <div
+                            key={item.code}
+                            className={cn(
+                                "px-4 py-2 text-sm font-medium transition-colors cursor-pointer rounded-md",
+                                "text-muted-foreground hover:text-primary hover:bg-primary/5"
+                            )}
+                        >
                             {item.label}
                         </div>
-                    ))
-                }
-                </div>
-                
+                    ))}
+                </nav>
 
-                <div>
-                    <button className="px-4 py-2 cursor-pointer bg-blue-500 text-white rounded-md hover:bg-blue-600">
+                <div className="flex items-center gap-4">
+                    <Button variant="ghost" size="sm" className="hidden sm:flex text-muted-foreground">
+                        Sign In
+                    </Button>
+                    <Button size="sm" className="rounded">
                         Get Started
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>

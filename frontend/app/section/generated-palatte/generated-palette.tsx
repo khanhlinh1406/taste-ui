@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "@/app/store";
+import { Card, CardContent } from "@/app/components/ui/card";
 
 export default function GeneratedPalette() {
     const { colors, loading } = useSelector((state: RootState) => state.design);
@@ -19,18 +20,25 @@ export default function GeneratedPalette() {
             {colors?.length > 0 && (
                 <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-6">
                     {colors.map((color) => (
-                        <div key={color.code}>
+
+                        <Card
+                            key={color.code}
+                            className="group border-none bg-transparent shadow-none py-0 gap-0 ring-0 hover:scale-105"
+                        >
                             <div
                                 className="mb-3 h-48 rounded-xl shadow-lg transition-transform hover:scale-105 hover:shadow-gray-400 group-hover:-translate-y-2"
                                 style={{ backgroundColor: color.code }}
                             />
-                            <p className="mb-1 text-xs font-bold uppercase tracking-widest">
-                                {color.name}
-                            </p>
-                            <p className="text-on-surface-variant font-mono text-sm">
-                                {color.code}
-                            </p>
-                        </div>
+
+                            <CardContent className="p-0">
+                                <p className="mb-1 text-xs font-bold uppercase tracking-widest text-foreground">
+                                    {color.name}
+                                </p>
+                                <p className="text-muted-foreground font-mono text-sm uppercase">
+                                    {color.code}
+                                </p>
+                            </CardContent>
+                        </Card>
                     ))}
                 </div>
             )}

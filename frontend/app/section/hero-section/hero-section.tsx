@@ -1,3 +1,5 @@
+import { Button } from "@/app/components/ui/button"
+
 export default function HeroSection() {
     return (
         <div id="hero-section" className="p-4">
@@ -12,8 +14,8 @@ export default function HeroSection() {
                 TasteUI leverages neural curation to transform moodboards, brand images, and text descriptions into production-ready UI tokens and components.
             </p>
             <div className="flex justify-center gap-4">
-                <button className="rounded bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 hover:shadow-md">Start Crafting</button>
-                <button className="rounded bg-white text-blue-500 rounded-md py-2 px-4 hover:shadow-md">View Showcase</button>
+                <Button variant="default" size="lg">Start Crafting</Button>
+                <Button variant="secondary" size="lg">View Showcase</Button>
             </div>
         </div>
     )

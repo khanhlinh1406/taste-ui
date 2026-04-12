@@ -1,4 +1,14 @@
+import { DEFAULT_SMILAR_THEME } from "@/app/data/similar-theme";
 import { useState } from "react";
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
 
 type ThemeColor = { name: string; code: string };
 
@@ -16,72 +26,7 @@ type SimilarTheme = {
 };
 
 export default function SimilarThemes() {
-  const [themes] = useState<SimilarTheme[]>([
-        {
-            id: "LX-402",
-            percentage: 98,
-            name: "Lumina Slate",
-            description: "Cool tones, geometric form, high precision.",
-            gradientFrom: "#0052d0",
-            gradientTo: "#272e42",
-            gradientAlt:
-              "Cool gradient from vivid blue to deep slate with a precise, technical feel",
-            badgeVariant: "primary",
-            colors: [
-              { name: "", code: "#272e42" },
-              { name: "", code: "#0052d0" },
-              { name: "", code: "#a5adc6" },
-            ],
-          },
-          {
-            id: "AM-112",
-            percentage: 82,
-            name: "Velvet Dusk",
-            description: "Warm shadows, organic radii, soft contrast.",
-            gradientFrom: "#8d3a8b",
-            gradientTo: "#400042",
-            gradientAlt:
-              "Deep moody gradient of orchid and dark plum colors with subtle grain texture",
-            badgeVariant: "tertiary",
-            colors: [
-              { name: "", code: "#8d3a8b" },
-              { name: "", code: "#4d5d73" },
-              { name: "", code: "#f6f6ff" },
-            ],
-          },
-          {
-            id: "ET-908",
-            percentage: 75,
-            name: "Crimson Edge",
-            description: "High energy, sharp edges, bold typography.",
-            gradientFrom: "#b31b25",
-            gradientTo: "#570008",
-            gradientAlt:
-              "Dramatic gradient shift from vivid crimson red to deep burgundy black shadow",
-            badgeVariant: "error",
-            colors: [
-              { name: "", code: "#b31b25" },
-              { name: "", code: "#272e42" },
-              { name: "", code: "#ffffff" },
-            ],
-          },
-          {
-            id: "CL-220",
-            percentage: 68,
-            name: "Cloud Canvas",
-            description: "Minimalist, vast whitespace, airy feel.",
-            gradientFrom: "#eef0ff",
-            gradientTo: "#d1dcff",
-            gradientAlt:
-              "Ultra soft ethereal gradient of cloud white and pale sky blue with frosted finish",
-            badgeVariant: "primary",
-            colors: [
-              { name: "", code: "#f6f6ff" },
-              { name: "", code: "#d1dcff" },
-              { name: "", code: "#a5adc6" },
-            ],
-          },
-  ]);
+  const [themes] = useState<SimilarTheme[]>(DEFAULT_SMILAR_THEME as SimilarTheme[]);
 
   return (
     <div id="similar-themes">
@@ -94,18 +39,19 @@ export default function SimilarThemes() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {themes.map((theme) => (
-          <div
-            key={theme.id}
-            className="border-outline-variant/5 bg-surface-container-lowest group overflow-hidden rounded-2xl border shadow-sm transition-all hover:shadow-xl"
+
+          <Card key={theme.id}
+            className="group overflow-hidden rounded-2xl border-opacity-50 shadow-sm transition-all hover:shadow-xl py-0 gap-0"
           >
             <div
-              className="h-40"
+              className="h-40 w-full"
               style={{
                 backgroundImage: `linear-gradient(to bottom right, ${theme.gradientFrom}, ${theme.gradientTo})`,
               }}
               aria-label={theme.gradientAlt}
             />
-            <div className="p-6 bg-white">
+
+            <CardContent className="p-4">
               <div className="mb-4 flex items-center justify-between">
                 <span
                   className="rounded px-2 py-1 text-[10px] font-bold uppercase tracking-wider"
@@ -116,25 +62,28 @@ export default function SimilarThemes() {
                 >
                   {theme.percentage}% Match
                 </span>
-                <span className="text-gray-500 font-mono text-[10px]">
+                <span className="text-muted-foreground font-mono text-[10px]">
                   ID: {theme.id}
                 </span>
               </div>
-              <h4 className="mb-2 text-lg font-bold">{theme.name}</h4>
-              <p className="text-gray-500 mb-6 text-xs">
+
+              <h4 className="mb-2 text-lg font-bold tracking-tight">{theme.name}</h4>
+              <p className="text-muted-foreground mb-6 text-xs leading-relaxed">
                 {theme.description}
               </p>
+
               <div className="flex -space-x-2">
                 {theme.colors.map((c) => (
                   <div
                     key={c.code}
-                    className="h-6 w-6 rounded-full border-2"
+                    className="h-6 w-6 rounded-full border-2 border-background"
                     style={{ backgroundColor: c.code }}
+                    title={c.name}
                   />
                 ))}
               </div>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </div>

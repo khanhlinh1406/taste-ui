@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_BASE } from "@/app/api/api";
+import { DEFAULT_PALETTE } from "@/app/data/default-palette";
 
 export const extractColorsThunk = createAsyncThunk(
     "design/extractColors",
@@ -22,15 +23,6 @@ interface DesignState {
     loading: boolean;
     previewPic: string | null;
 }
-
-const DEFAULT_PALETTE = [
-    { name: "Primary", code: "#0052D0" },
-    { name: "Secondary", code: "#4D5D73" },
-    { name: "Tertiary", code: "#8D3A8B" },
-    { name: "Accent", code: "#D1DCFF" },
-    { name: "On Surface", code: "#272E42" },
-    { name: "Outline", code: "#6F768E" },
-];
 
 const initialState: DesignState = {
     colors: DEFAULT_PALETTE,
