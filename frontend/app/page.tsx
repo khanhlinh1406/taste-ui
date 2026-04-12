@@ -8,11 +8,11 @@ import ColorPalette from "@/app/section/generated-palatte/generated-palette";
 import InputSection from "@/app/section/input-section/input-section";
 
 
-import NavBar from "@/app/layout/nav-bar";
+import NavBar from "@/app/components/layout/nav-bar";
 import GeneratedPalette from "@/app/section/generated-palatte/generated-palette";
 import SimilarThemes from "@/app/section/recommendation/similar-themes";
 import ThemeReview from "@/app/section/theme-review/theme-review";
-import Footer from "@/app/layout/footer";
+import Footer from "@/app/components/layout/footer";
 
 export default function Home() {
   return (

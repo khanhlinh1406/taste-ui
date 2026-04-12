@@ -1,4 +1,4 @@
-const  API_BASE = 'http://localhost:8000';
+export const API_BASE = 'http://localhost:8000';
 
 export async function extractColors(file: File) {
     const formData = new FormData();

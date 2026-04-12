@@ -1,10 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 @theme inline {
   --color-background: var(--background);
@@ -13,15 +9,97 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: #ffffff;
   color: #0a0a0a;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 228 6% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 228 6% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 228 6% 15%;
+  --primary: 217.22 91.22% 59.8%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 100%;
+  --secondary-foreground: 217.22 91.22% 59.8%;
+  --muted: 200 10% 96%;
+  --muted-foreground: 214 13% 56%;
+  --accent: 200 10% 96%;
+  --accent-foreground: 224 15% 22%;
+  --destructive: 351.72 100% 40.53%;
+  --border: 344.78 9.13% 90.59%;
+  --input: 0 0% 100%;
+  --ring: 214 12% 72%;
+  --chart-1: 252 55% 75%;
+  --chart-2: 260 75% 58%;
+  --chart-3: 263 80% 52%;
+  --chart-4: 264 78% 48%;
+  --chart-5: 266 65% 42%;
+  --radius: 0.625rem;
+  --sidebar: 200 10% 98%;
+  --sidebar-foreground: 228 6% 15%;
+  --sidebar-primary: 263 80% 52%;
+  --sidebar-primary-foreground: 255 60% 96%;
+  --sidebar-accent: 200 10% 96%;
+  --sidebar-accent-foreground: 224 15% 22%;
+  --sidebar-border: 214 10% 92%;
+  --sidebar-ring: 214 12% 72%;
+}
+
+.dark {
+  --background: 228 6% 15%;
+  --foreground: 200 10% 98%;
+  --card: 224 15% 22%;
+  --card-foreground: 200 10% 98%;
+  --popover: 224 15% 22%;
+  --popover-foreground: 200 10% 98%;
+  --primary: 266 65% 42%;
+  --primary-foreground: 255 60% 96%;
+  --secondary: 286 6% 27%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 217 12% 27%;
+  --muted-foreground: 214 12% 72%;
+  --accent: 217 12% 27%;
+  --accent-foreground: 200 10% 98%;
+  --destructive: 22 75% 70%;
+  --border: 0 0% 100% / 10%;
+  --input: 0 0% 100% / 15%;
+  --ring: 214 13% 56%;
+  --chart-1: 252 55% 75%;
+  --chart-2: 260 75% 58%;
+  --chart-3: 263 80% 52%;
+  --chart-4: 264 78% 48%;
+  --chart-5: 266 65% 42%;
+  --sidebar: 224 15% 22%;
+  --sidebar-foreground: 200 10% 98%;
+  --sidebar-primary: 260 75% 58%;
+  --sidebar-primary-foreground: 255 60% 96%;
+  --sidebar-accent: 217 12% 27%;
+  --sidebar-accent-foreground: 200 10% 98%;
+  --sidebar-border: 0 0% 100% / 10%;
+  --sidebar-ring: 214 13% 56%;
+}
+
+  * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  html {
+    font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  }
 }
